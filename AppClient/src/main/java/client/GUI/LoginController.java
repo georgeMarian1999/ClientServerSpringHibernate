@@ -72,7 +72,6 @@ public class LoginController {
                 });
             stage.show();
             mainCtrl.setUser(crtAngajat);
-            //mainCtrl.setLoggedEmployess();
             mainCtrl.initialiazeTabels();
             mainCtrl.setCurseTabel();
             mainCtrl.setComboBox();
@@ -82,7 +81,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText("Authentication failure");
-            alert.setContentText("An error occured :"+e.getMessage());
+            alert.setContentText("An error occured : "+e.getMessage());
             alert.showAndWait();
         }
     }
