@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps" location="classpath:bd.config"/>
+    <bean id="repoAngajat" class="Repos.Repositories.AngajatRepo">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+    <bean id="repoCursa" class="Repos.Repositories.CursaRepo">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+    <bean id="repoEchipa" class="Repos.Repositories.EchipaRepo">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+    <bean id="repoParticipant" class="Repos.Repositories.ParticipantRepo">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="repoInscriere" class="Repos.Repositories.InscriereRepo">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+    <bean id="serviceLocal" class="Service.Service">
+        <constructor-arg ref="repoAngajat"/>
+        <constructor-arg ref="repoCursa"/>
+        <constructor-arg ref="repoEchipa"/>
+        <constructor-arg ref="repoParticipant"/>
+        <constructor-arg ref="repoInscriere"/>
+    </bean>
+    <bean id="serviceImpl" class="server.ServicesImplementation">
+        <constructor-arg ref="serviceLocal"/>
+
+    </bean>
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="Implem"/>
+        <property name="service" ref="serviceImpl"/>
+        <property name="serviceInterface" value="Services.IServices"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+
+
+</beans>
