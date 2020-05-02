@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class MainController extends UnicastRemoteObject implements Initializable,IObserver {
@@ -52,7 +53,8 @@ public class MainController extends UnicastRemoteObject implements Initializable
     TableColumn<DTOBJPartCapa,Integer> NumePart;
     @FXML
     TableColumn<DTOBJPartCapa,Integer> CapacitatePart;
-
+    @FXML
+    ComboBox<String> TeamBox;
     @FXML
     Button InscButton;
     @FXML
@@ -191,5 +193,20 @@ public class MainController extends UnicastRemoteObject implements Initializable
             tipuriCurse.add(c.getCapacitate());
         }
         CapBox.setItems(tipuriCurse);
+    }
+
+    public void setTeamBox() {
+        ObservableList<String> teams=FXCollections.observableArrayList();
+        try {
+            String[] team = server.getAllTeams();
+            teams.addAll(Arrays.asList(team));
+            TeamBox.setItems(teams);
+        }catch (ServerException e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error getting all the teams");
+            alert.setContentText("An error occured : "+e.getMessage());
+            alert.showAndWait();
+        }
     }
 }

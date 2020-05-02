@@ -75,6 +75,7 @@ public class LoginController {
             mainCtrl.initialiazeTabels();
             mainCtrl.setCurseTabel();
             mainCtrl.setComboBox();
+            mainCtrl.setTeamBox();
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
         }catch(ServerException e){
