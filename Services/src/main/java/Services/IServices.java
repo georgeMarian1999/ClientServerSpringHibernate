@@ -8,4 +8,5 @@ public interface IServices  {
     void submitInscriere(DTOInfoSubmit infoSubmit) throws ServerException;
     DTOBJCursa[] getCurseDisp() throws ServerException;
     DTOBJPartCapa[] searchByTeam(String team) throws ServerException;
+    String[] getAllTeams() throws ServerException;
 }

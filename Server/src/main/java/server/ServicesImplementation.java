@@ -18,7 +18,6 @@ import java.util.concurrent.Executors;
 public class ServicesImplementation implements IServices {
 
     private Service service;
-    private Iterable<Angajat> angajati;
     private Iterable<DTOBJCursa> cursedisp;
     private Map<String,IObserver> loggedEmployees;
 
@@ -26,7 +25,6 @@ public class ServicesImplementation implements IServices {
 
     public ServicesImplementation(Service service1){
         service=service1;
-        angajati=service1.findAllEmployees();
         cursedisp=service1.GroupByCapacitate();
         loggedEmployees=new ConcurrentHashMap<>();
     }
@@ -40,7 +38,7 @@ public class ServicesImplementation implements IServices {
             }
             loggedEmployees.put(angajat.getUsername(),client);
         }else{
-            System.out.println("Authentiocation failed");
+            System.out.println("Authentication failed");
             throw new ServerException("Wrong username or password");
         }
 
@@ -114,7 +112,11 @@ public class ServicesImplementation implements IServices {
         for(DTOBJPartCapa part : result){
             ret.add(part);
         }
-
         return ret.toArray(new DTOBJPartCapa[ret.size()]);
+    }
+
+    @Override
+    public String[] getAllTeams() throws ServerException {
+        return new String[0];
     }
 }

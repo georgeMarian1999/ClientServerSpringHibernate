@@ -1,24 +1,36 @@
 package Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-
-public class DTOBJCursa implements Serializable,Entity<Integer> {
+@Entity(name="DTOBJCursa")
+@Table(name = "DTOBJCursa")
+public class DTOBJCursa implements Serializable{
+    @Id
     private int id;
+    @Column(name = "capacitate")
     private int capacitate;
+    @Column(name = "Nrinscrisi")
     private int Nrinscrisi;
 
-    public DTOBJCursa(int idcursa,int cap,int nr){
+    public DTOBJCursa(){
+
+    }
+
+    public DTOBJCursa(int idcursa,int cap,long nr){
         this.id=idcursa;
         this.capacitate=cap;
-        this.Nrinscrisi=nr;
+        this.Nrinscrisi=(int)nr;
     }
-    @Override
+
     public Integer getId() {
         return id;
     }
 
-    @Override
-    public void setID(Integer integer) {
+
+    public void setId(Integer integer) {
         this.id=integer;
     }
 

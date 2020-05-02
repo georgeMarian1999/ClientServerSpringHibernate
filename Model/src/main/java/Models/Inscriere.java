@@ -1,41 +1,42 @@
 package Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
+@Entity
+@Table(name = "Inscriere")
+public class Inscriere implements Serializable {
+    @Id
+    @Column(name = "CursaId")
+    private int CursaId;
+    @Id
+    @Column(name = "ParticipantId")
+    private int ParticipantId;
 
-public class Inscriere implements Serializable,Entity<Integer> {
-    private Integer idInscriere;
-    private Integer idParticipant;
-    private Integer idCursa;
+    public Inscriere(){
 
-    public Inscriere(Integer idInscriere,Integer idParticipant,Integer idCursa){
-        this.idInscriere=idInscriere;
-        this.idParticipant=idParticipant;
-        this.idCursa=idCursa;
     }
 
-    @Override
-    public Integer getId() {
-        return this.idInscriere;
+    public Inscriere(Integer idParticipant,Integer idCursa){
+        this.ParticipantId=idParticipant;
+        this.CursaId=idCursa;
     }
 
-    @Override
-    public void setID(Integer integer) {
-        this.idInscriere=integer;
+    public int getCursaId() {
+        return CursaId;
     }
 
-    public Integer getIdParticipant() {
-        return idParticipant;
+    public void setCursaId(int cursaId) {
+        CursaId = cursaId;
     }
 
-    public Integer getIdCursa() {
-        return idCursa;
+    public int getParticipantId() {
+        return ParticipantId;
     }
 
-    public void setIdParticipant(Integer idParticipant) {
-        this.idParticipant = idParticipant;
-    }
-
-    public void setIdCursa(Integer idCursa) {
-        this.idCursa = idCursa;
+    public void setParticipantId(int participantId) {
+        ParticipantId = participantId;
     }
 }

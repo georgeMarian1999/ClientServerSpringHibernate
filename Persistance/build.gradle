@@ -15,7 +15,13 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
 
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
-
+    compile 'org.hibernate:hibernate-core:5.2.10.Final'
+    //implementation 'net.kemitix:sqlite-dialect:0.1.0'
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    //compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+    compile('javax.xml.bind:jaxb-api:2.3.0')
+    compile('javax.activation:activation:1.1')
+    compile('org.glassfish.jaxb:jaxb-runtime:2.3.0')
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.23.1'
 
 

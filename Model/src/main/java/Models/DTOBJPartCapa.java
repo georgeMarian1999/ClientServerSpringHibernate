@@ -1,11 +1,23 @@
 package Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-
-public class DTOBJPartCapa implements Serializable,Entity<Integer> {
+@Entity(name = "DTOBJPartCapa")
+@Table(name = "DTOBJPartCapa")
+public class DTOBJPartCapa implements Serializable {
+    @Id
     private Integer id;
+    @Column(name = "nume")
     private String nume;
+    @Column(name = "capacitate")
     private int capactiate;
+
+    public DTOBJPartCapa(){
+
+    }
 
     public DTOBJPartCapa(Integer ID,String Nume,int cap){
         this.id=ID;
@@ -29,12 +41,12 @@ public class DTOBJPartCapa implements Serializable,Entity<Integer> {
         this.capactiate = capactiate;
     }
 
-    @Override
+
     public Integer getId() {
         return this.id;
     }
 
-    @Override
+
     public void setID(Integer integer) {
         this.id=integer;
     }

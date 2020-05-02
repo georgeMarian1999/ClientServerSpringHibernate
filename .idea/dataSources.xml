@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Curse.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="CurseHibernate.db" uuid="a93a79be-4145-476f-854c-dcb9df21ac87">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/CurseHibernate.db</jdbc-url>
+    </data-source>
   </component>
 </project>

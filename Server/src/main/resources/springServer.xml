@@ -27,13 +27,17 @@
         <constructor-arg ref="repoParticipant"/>
         <constructor-arg ref="repoInscriere"/>
     </bean>
+    <bean id="HibernateServ" class="Service.HibernateService"/>
     <bean id="serviceImpl" class="server.ServicesImplementation">
         <constructor-arg ref="serviceLocal"/>
-
     </bean>
+    <bean id="serviceImplHibernate" class="server.ServicesImplementationHibernate">
+        <constructor-arg ref="HibernateServ"/>
+    </bean>
+
     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
         <property name="serviceName" value="Implem"/>
-        <property name="service" ref="serviceImpl"/>
+        <property name="service" ref="serviceImplHibernate"/>
         <property name="serviceInterface" value="Services.IServices"/>
         <property name="servicePort" value="1099"/>
     </bean>

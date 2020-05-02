@@ -51,7 +51,7 @@ public class CursaRepo implements CursaRepository {
 
         Connection con=utils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("insert into Cursa values (?,?)")){
-            preStmt.setInt(1,entity.getId());
+            preStmt.setInt(1,entity.getCursaId());
             preStmt.setInt(2,entity.getCapacitate());
             int result=preStmt.executeUpdate();
 
@@ -84,7 +84,7 @@ public class CursaRepo implements CursaRepository {
 
         Connection con=utils.getConnection();
         try(PreparedStatement preStmt=con.prepareStatement("update Cursa set idCursa=?,capacitate=? where idCursa=?")){
-            preStmt.setInt(1,entity.getId());
+            preStmt.setInt(1,entity.getCursaId());
             preStmt.setInt(2,entity.getCapacitate());
             preStmt.setInt(3,integer);
         }catch (SQLException ex){

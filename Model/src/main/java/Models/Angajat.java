@@ -1,11 +1,27 @@
 package Models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 
-public class Angajat implements Comparable<Angajat>,Serializable, Entity<Integer> {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Angajat")
+public class Angajat implements Comparable<Angajat>,Serializable {
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "AngajatId")
     private Integer id;
+    @Column(name = "User")
     private String username;
+    @Column(name = "Pass")
     private String password;
+
+    public Angajat(){
+
+    }
 
     public Angajat(Integer id,String user,String pass){
         this.id=id;
@@ -13,24 +29,19 @@ public class Angajat implements Comparable<Angajat>,Serializable, Entity<Integer
         this.password=pass;
     }
 
-    public Angajat(String username){
-        this.username=username;
-        this.id=0;
-        this.password="";
-    }
+
     @Override
     public String toString() {
         String string="Angajat "+username+" cu id-ul "+id;
         return string;
     }
 
-    @Override
+
     public Integer getId() {
         return this.id;
     }
 
-    @Override
-    public void setID(Integer integer) {
+    public void setId(Integer integer) {
         this.id=integer;
     }
 

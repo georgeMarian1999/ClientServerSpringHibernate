@@ -49,9 +49,9 @@ public class InscriereRepo implements InscriereRepository {
         Connection con=utils.getConnection();
 
         try(PreparedStatement preStmt=con.prepareStatement("insert into Inscriere values(?,?,?)")){
-            preStmt.setInt(1,entity.getId());
-            preStmt.setInt(2,entity.getIdParticipant());
-            preStmt.setInt(3,entity.getIdCursa());
+            //preStmt.setInt(1,entity.getId());
+            //preStmt.setInt(2,entity.getIdParticipant());
+            //preStmt.setInt(3,entity.getIdCursa());
             int result=preStmt.executeUpdate();
 
         }catch (SQLException ex){

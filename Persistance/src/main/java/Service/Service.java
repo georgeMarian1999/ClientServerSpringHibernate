@@ -66,7 +66,7 @@ public class Service {
         return this.angajati.findOtherEmployees(angajat);
     }
     public void updateCursa(Cursa cursaveche, Cursa cursanoua){
-        this.curse.update(cursaveche.getId(),cursanoua);
+        this.curse.update(cursaveche.getCursaId(),cursanoua);
     }
     public void updateEchipa(Echipa echipaveche, Echipa echipanoua){
         this.echipe.update(echipaveche.getId(),echipanoua);
@@ -91,8 +91,8 @@ public class Service {
         idInscriere=this.inscrieri.findMaxId()+1;
         Participant Nou=new Participant(idParticipant,numeParticipant,idEchipa);
         this.AddParticipant(Nou);
-        Inscriere Noua=new Inscriere(idInscriere,idParticipant,idCursa);
-        this.AddInscriere(Noua);
+        //Inscriere Noua=new Inscriere(idInscriere,idParticipant,idCursa);
+        //this.AddInscriere(Noua);
     }
 
 

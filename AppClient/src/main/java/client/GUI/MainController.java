@@ -127,7 +127,7 @@ public class MainController extends UnicastRemoteObject implements Initializable
     public void logout(ActionEvent actionEvent) {
         try {
             server.logout(crtAngajat, this);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            //((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         } catch (ServerException e) {
             System.out.println("Logout error " + e);
         }

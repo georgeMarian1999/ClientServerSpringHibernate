@@ -51,7 +51,7 @@ public class ParticipantRepo implements ParticipantRepository {
         try(PreparedStatement preStmt=con.prepareStatement("insert into Participant values (?,?,?)")){
             preStmt.setInt(1,entity.getId());
             preStmt.setString(2,entity.getNume());
-            preStmt.setInt(3,entity.getIdEchipa());
+            preStmt.setInt(3,entity.getEchipaId());
             int result=preStmt.executeUpdate();
 
         }catch(SQLException ex){
@@ -85,7 +85,7 @@ public class ParticipantRepo implements ParticipantRepository {
         try(PreparedStatement preStmt=con.prepareStatement("update Participant set idParticipant=?,nume=?,idEchipa=?  where idParticipant=?")){
             preStmt.setInt(1,entity.getId());
             preStmt.setString(2,entity.getNume());
-            preStmt.setInt(3,entity.getIdEchipa());
+            preStmt.setInt(3,entity.getEchipaId());
             preStmt.setInt(4,integer);
         }catch (SQLException ex){
             logger.error(ex);

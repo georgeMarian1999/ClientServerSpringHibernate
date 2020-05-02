@@ -1,43 +1,65 @@
 package Models;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Participant implements Serializable,Entity<Integer> {
+@Entity
+@Table(name="Participant")
+public class Participant implements Serializable{
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "ParticipantId")
     private Integer id;
+    @Column(name = "nume")
     private String nume;
-    private int idEchipa;
+    @Column(name = "EchipaId")
+    private int EchipaId;
 
-    public Participant(Integer ID,String name,Integer idEchipa){
+    public Participant(){
+
+    }
+
+    public Participant(Integer ID,String name,int echipaId){
         this.id=ID;
         this.nume=name;
-        this.idEchipa=idEchipa;
+        this.EchipaId=echipaId;
+
     }
 
 
-    @Override
-    public void setID(Integer integer) {
-        this.id=integer;
-    }
-
-    @Override
     public Integer getId() {
         return this.id;
+    }
+    public void setId(Integer integer) {
+        this.id=integer;
     }
 
     public String getNume() {
         return nume;
     }
-
     public void setNume(String nume) {
         this.nume = nume;
     }
 
-    public int getIdEchipa() {
-        return idEchipa;
+    public int getEchipaId() {
+        return EchipaId;
     }
 
-    public void setIdEchipa(Integer idEchipa) {
-        this.idEchipa = idEchipa;
+    public void setEchipaId(int echipaId) {
+        EchipaId = echipaId;
     }
+
+    @ManyToMany(mappedBy = "participanti")
+    private Set<Cursa> curse=new HashSet<>();
+
+    public Set<Cursa> getCurse(){
+        return curse;
+    }
+
 }
